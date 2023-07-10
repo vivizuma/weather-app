@@ -47,3 +47,38 @@ table {
 	border-spacing: 0;
 }
 
+*{
+	border: solid 2px red
+}
+
+#header{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:100px;
+	background:grey;
+	
+}
+
+.spacer{
+	height:50px;
+
+}
+
+#content{
+	display:flex;
+	flex-direction:column;
+	justify-content:space-around;
+	align-items: center;
+}
+#search-container{
+	height:30px;
+}
+#weather-card{
+	border: 2px solid green;
+	width:450px;
+	height:400px;
+	color:white;
+	background:black;
+	border-radius:15px
+}
