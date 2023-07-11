@@ -1,13 +1,13 @@
 let jsonData;
 
-async function fetchData() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
-  const json = await response.json();
-  jsonData = json;
-  console.log(jsonData);
-}
+// async function fetchData() {
+//   const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+//   const json = await response.json();
+//   jsonData = json;
+// //   console.log(jsonData);
+// // }
 
-fetchData();
+// fetchData();
 
 const APP = {
   init() {
@@ -29,11 +29,11 @@ const APP = {
     fetch(
       "http://api.weatherapi.com/v1/forecast.json?key=146bc6e955bc4674a65135729230707&q=Atlanta&days=1&aqi=no&alerts=no"
     )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (response) {
-        console.log(response);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Hell");
+        console.log(data.location.name);
+        renderCard(data);
       });
   },
 };
@@ -62,3 +62,23 @@ const baseUrl = "http://api.weatherapi.com/v1";
 // fetchWeather("London", apiKey, baseUrl);
 
 document.addEventListener("DOMContentLoaded", APP.init);
+console.log(
+  fetch(
+    "http://api.weatherapi.com/v1/forecast.json?key=146bc6e955bc4674a65135729230707&q=Atlanta&days=1&aqi=no&alerts=no"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Hell");
+      console.log(data.location.name);
+      renderCard(data);
+    })
+);
+
+function renderCard(data) {
+  //sections
+  const locationTitle = document.getElementById("card-header");
+  const temperature = document.getElementById("temperature");
+  const feelsLike = document.getElementById("feels-like");
+
+  locationTitle.innerText = data.location.name;
+}
