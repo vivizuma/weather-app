@@ -16,7 +16,14 @@ const APP = {
   },
   eventListeners() {
     const searchBtn = document.getElementById("search-btn");
+    const inputField = document.getElementById("search-field");
     searchBtn.addEventListener("click", APP.searchClicked);
+    inputField.addEventListener("keydown", function (e) {
+      console.log(e);
+      if (e.key === "Enter") {
+        APP.searchClicked();
+      }
+    });
   },
   searchClicked() {
     console.log("saerch clicked");
@@ -47,8 +54,8 @@ const APP = {
     const text = document.getElementById("status-text");
     console.log(data);
     locationTitle.innerHTML = data.location.name;
-    temperature.innerHTML = data.current.temp_c;
-    feelsLike.innerHTML = data.current.feelslike_c;
+    temperature.innerHTML = `${data.current.temp_c}°C`;
+    feelsLike.innerHTML = `Feels like ${data.current.feelslike_c}°C`;
     text.innerHTML = data.current.condition.text;
   },
 };
@@ -89,3 +96,9 @@ console.log(
       console.log(data.location.name);
     })
 );
+
+// todo -
+// styling
+// background pic change on weather status text? or just icon
+// get to COMPLETE and finish the project. Move on. ]
+// release it from your ram
